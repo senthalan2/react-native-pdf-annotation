@@ -214,7 +214,7 @@ https://github.com/user-attachments/assets/5f77b75d-1ba7-4f40-92b2-d3e73208fc79
 
 ### Step 7
 
-Select the `Generate` target. Under `Info -> External Build Tool Configuration`, enter `generate` as the Arguments and choose the libmupdf directory path. In this case, the `libmupdf` directory is located inside the `ios` directory, so you should enter `libmupdf` as the Directory path, as shown in the image below.
+Select the `Generate` target. Under `Info -> External Build Tool Configuration`, enter `generate` as the Arguments and choose the `libmupdf` directory path. In this case, the `libmupdf` directory is located inside the `ios` directory, so you should enter `libmupdf` as the Directory path, as shown in the image below.
 
 ![Step_7](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_7.png)
 
