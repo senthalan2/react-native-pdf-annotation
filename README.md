@@ -185,32 +185,33 @@ bash setup_build.sh
 
 Go to the `MuPdf_IOS_Configuration_Files` directory and Move the `Classes` and `libmupdf` directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files, which are located in the `Modules` directory, to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
 
-![1](https://github.com/user-attachments/assets/6617c95e-a717-4f98-bf03-bc37f1cdb72c)
+![Step_2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_2.png)
 
 ### Step 3
 
 Open your project in Xcode by opening `YourProjectName.xcworkspace` as shown in the image below.
 
-![2](https://github.com/user-attachments/assets/23f057fa-a5a1-4056-ad30-9b9d61b303d9)
+![Step_3](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_3.png)
 
 ### Step 4
 
 Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project target in Xcode, as shown in the image below.
 
-![3](https://github.com/user-attachments/assets/c5dfc397-01a6-4a61-b4a0-1c2387637de3)
+![Step_4](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.png)
 
 ### Step 5
 
 Add the `libmupdf.a` and `libmupdfthird.a` files, which are located in the previously downloaded `Libraries` directory, to your project target under `Build Phases` -> `Link Binary With Libraries`, as shown in the image below.
 
-![4](https://github.com/user-attachments/assets/31b6fd18-f2ac-46e4-91ec-75dfd56ba853)
+![Step_5](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_5.png)
 
 
 ### Step 6
 
 In your project's `Targets` section, add another target by clicking the `add target (plus icon) button`. In the popup, select the `Other` tab and choose `External Build System` under the `Other` section. Click Next, enter `Generate` as the Product Name, and then click Finish. Refer to the video below for a demonstration of adding an External Build System target.
 
-https://github.com/user-attachments/assets/ee988055-3b39-4fa8-8566-e712486943e1
+[![Video Thumbnail](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/hqdefault.jpg)](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_6.mov?raw=true)
+
 
 ### Step 7
 
