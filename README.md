@@ -175,7 +175,7 @@ cd MuPdf_IOS_Configuration_Files
 ```
 
 Run the command below to update the submodules. 
-``Note: Make sure the `setup_build.sh` file exists.``
+Note: Make sure the `setup_build.sh` file exists in the `MuPdf_IOS_Configuration_Files` directory.
 
 ```sh
 bash setup_build.sh
