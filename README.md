@@ -201,7 +201,7 @@ Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnota
 
 ### Step 5
 
-Add the `libmupdf.a` and `libmupdfthird.a` files, which are located in the previously downloaded `Libraries` directory, to your project target under `Build Phases` -> `Link Binary With Libraries`, as shown in the image below.
+Add the `libmupdf.a` and `libmupdfthird.a` files, which are located in the `Libraries` directory of the cloned `MuPdf_IOS_Configuration_Files` repository, to your project target under `Build Phases -> Link Binary With Libraries`.
 
 ![Step_5](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_5.png)
 
@@ -223,6 +223,35 @@ Select the `Generate` target. Under `Info -> External Build Tool Configuration`,
 Select your project's directory and open `Build Settings`. In `Build Settings`, search for `User Header Search Paths`. Add the mupdf library path as `libmupdf/include` to this section, as shown in the image below. The `libmupdf` directory was downloaded earlier and moved to `Your_Project_Name/ios`. The `include` directory, which contains the `mupdf library`, is located inside the `libmupdf` directory.
 
 ![Step_8](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_8.png)
+
+### Step 9
+
+Select your project's target and open `Build Phases`. Click the plus button and choose `New Run Script Phase` from the menu to add a run script for libmupdf, as shown in the image below.
+
+![Step_9](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_9.png)
+
+### Step 10
+
+In the `Run Script` section, enter the following script to run mupdf's build script. This script generates the supported files for mupdf.
+
+```sh
+bash build_libs.sh
+```
+In the `Run Script`, add the output files under the `Output Files` section, as shown in the image below.
+
+![Step_10](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_10.png)
+
+### Step 11
+
+Drag the `Run Script` section from the bottom to above the `Link Binary With Libraries` section, as shown in the image below.
+
+![Step_11](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_11.png)
+
+### Step 12
+
+Click the scheme menu and select `Generate`. Then, run the build, as shown in the image below.
+
+![Step_12](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_12.png)
 
 
 ## Contributing
