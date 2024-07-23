@@ -220,7 +220,7 @@ Select the `Generate` target. Under `Info -> External Build Tool Configuration`,
 
 ### Step 8
 
-Select your project's directory and open `Build Settings`. In `Build Settings`, search for `User Header Search Paths`. Add the mupdf library path as `libmupdf/include` to this section, as shown in the image below. The `libmupdf` directory was downloaded earlier and moved to `Your_Project_Name/ios`. The `include` directory, which contains the `mupdf` library, is located inside the `libmupdf` directory.
+Select your project's directory and open `Build Settings`. In `Build Settings`, search for `User Header Search Paths`. Add the mupdf library path as `libmupdf/include` to this section, as shown in the image below. The `libmupdf` directory was moved from the cloned repository `MuPdf_IOS_Configuration_Files` to `Your_Project_Name/ios`. The `include` directory, which contains the `mupdf` library, is located inside the `libmupdf` directory.
 
 ![Step_8](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_8.png)
 
