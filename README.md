@@ -224,7 +224,7 @@ Select your project's directory and open `Build Settings`. In `Build Settings`, 
 
 ![Step_8.1](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_8.1.png)
 
-In the same `Build Settings`, search for `Objective-C Automatic Reference Counting` and change its value to `No`.
+In the same `Build Settings`, search for `Objective-C Automatic Reference Counting` and change its value to `No`, as shown in the image below.
 
 ![Step_8.2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_8.2.png)
 
