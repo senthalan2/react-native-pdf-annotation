@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item type="color" name="pdf_header_background_color">
+    @color/pdf_header_background_color
+  </item>
+  <item type="color" name="pdf_footer_background_color">
+    @color/pdf_footer_background_color
+  </item>
+</resources>

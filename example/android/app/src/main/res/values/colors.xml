@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="pdf_header_background_color">#00FF00</color>
+  <color name="pdf_footer_background_color">#0000FF</color>
+</resources>
