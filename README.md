@@ -162,9 +162,12 @@ This event is triggered when the PDF is closed without making changes or saving.
 
 ### Step 1
 
-Go to the [IOS Configuration Files](https://github.com/senthalan2/react-native-pdf-annotation/tree/main/ios) located in the repository and download all the files in the `MuPdfConfigFiles` directory using the [GitHub directory download](https://download-directory.github.io/) website or any other methods.
+Clone the [IOS Configuration Files](https://github.com/senthalan2/MuPdf_IOS_Configuration_Files) repository using the below command.
 
-The downloaded files and directories are as follows: [Classes](https://github.com/senthalan2/react-native-pdf-annotation/tree/main/ios/MuPdfConfigFiles/Classes), [Libraries](https://github.com/senthalan2/react-native-pdf-annotation/tree/main/ios/MuPdfConfigFiles/Libraries), [Modules](https://github.com/senthalan2/react-native-pdf-annotation/tree/main/ios/MuPdfConfigFiles/Modules), [libmupdf](https://github.com/senthalan2/react-native-pdf-annotation/tree/main/ios/MuPdfConfigFiles/libmupdf), [build_libs.sh](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/ios/MuPdfConfigFiles/build_libs.sh), [common.h](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/ios/MuPdfConfigFiles/common.h), [common.m](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/ios/MuPdfConfigFiles/common.m).
+```sh
+git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
+```
+
 
 ### Step 2
 
