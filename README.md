@@ -210,7 +210,7 @@ Add the `libmupdf.a` and `libmupdfthird.a` files, which are located in the previ
 
 In your project's `Targets` section, add another target by clicking the `add target (plus icon) button`. In the popup, select the `Other` tab and choose `External Build System` under the `Other` section. Click Next, enter `Generate` as the Product Name, and then click Finish. Refer to the video below for a demonstration of adding an External Build System target.
 
-[![Video Thumbnail](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/hqdefault.jpg)](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_6.mov?raw=true)
+![Step_6](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_6.gif)
 
 
 ### Step 7
