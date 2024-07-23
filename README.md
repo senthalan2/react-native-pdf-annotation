@@ -162,16 +162,28 @@ This event is triggered when the PDF is closed without making changes or saving.
 
 ### Step 1
 
-Clone the [IOS Configuration Files](https://github.com/senthalan2/MuPdf_IOS_Configuration_Files) repository using the below command.
+Clone the [IOS Configuration Files](https://github.com/senthalan2/MuPdf_IOS_Configuration_Files) repository using the command below.
 
 ```sh
 git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
 ```
 
+Navigate to the cloned repository directory using the command below.
+
+```sh
+cd MuPdf_IOS_Configuration_Files
+```
+
+Run the command below to update the submodules. 
+``Note: Make sure the `setup_build.sh` file exists.``
+
+```sh
+bash setup_build.sh
+```
 
 ### Step 2
 
-Move the downloaded `Classes` and `libmupdf` directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files, which are located in the downloaded Modules directory, to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
+Go to the `MuPdf_IOS_Configuration_Files` directory and Move the `Classes` and `libmupdf` directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files, which are located in the `Modules` directory, to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
 
 ![1](https://github.com/user-attachments/assets/6617c95e-a717-4f98-bf03-bc37f1cdb72c)
 
