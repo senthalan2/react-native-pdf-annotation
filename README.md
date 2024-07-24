@@ -241,6 +241,20 @@ Drag the `Run Script` section from the bottom to above the `Link Binary With Lib
 
 ### Step 12
 
+That's it! We have integrated PDF Annotation in iOS. Now, clean the build folder and erase derived data.
+
+##### Clean the Build Folder: 
+
+In Xcode, go to the menu bar and select `Product -> Clean Build Folder`.
+
+##### Erase Derived Data:
+
+Go to Xcode -> Preferences/Settings -> Locations tab.
+Click on the arrow next to the `Derived Data` folder path to open it in Finder.
+Delete the contents of the Derived Data folder.
+
+##### Follow the Below Steps:
+
 Click the scheme menu and select `Generate`. Then, run the build, as shown in the image below.
 
 ![Step_12](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_12.png)
