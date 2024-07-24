@@ -249,8 +249,8 @@ In Xcode, go to the menu bar and select `Product -> Clean Build Folder`.
 
 ##### Erase Derived Data:
 
-Go to Xcode -> Preferences/Settings -> Locations tab.
-Click on the arrow next to the `Derived Data` folder path to open it in Finder.
+Go to `Xcode -> Preferences/Settings -> Locations` tab.
+Click on the arrow next to the `Derived Data folder path` to open it in Finder.
 Delete the contents of the Derived Data folder.
 
 ##### Follow the Below Steps:
