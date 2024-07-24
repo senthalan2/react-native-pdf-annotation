@@ -259,6 +259,7 @@ Click the scheme menu and select `Generate`. Then, run the build, as shown in th
 
 ![Step_12](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_12.png)
 
+After that, change the scheme from `Generate` to `Your_Project_Name` and run the build again.
 
 ## Contributing
 
