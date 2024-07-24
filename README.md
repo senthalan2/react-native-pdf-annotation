@@ -241,7 +241,7 @@ Drag the `Run Script` section from the bottom to above the `Link Binary With Lib
 
 ### Step 12
 
-That's it! We have integrated PDF Annotation in iOS. Now, clean the build folder and erase derived data.
+That's it! We have integrated PDF Annotation in iOS using MuPdf. Now, clean the build folder and erase derived data.
 
 ##### Clean the Build Folder: 
 
