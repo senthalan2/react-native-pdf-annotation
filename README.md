@@ -168,22 +168,10 @@ Clone the [IOS Configuration Files](https://github.com/senthalan2/MuPdf_IOS_Conf
 git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
 ```
 
-Navigate to the cloned repository directory using the command below.
-
-```sh
-cd MuPdf_IOS_Configuration_Files
-```
-
-Run the command below to update the submodules. 
-Note: Make sure the `setup_build.sh` file exists in the `MuPdf_IOS_Configuration_Files` directory.
-
-```sh
-bash setup_build.sh
-```
 
 ### Step 2
 
-Go to the `MuPdf_IOS_Configuration_Files` directory and Move the `Classes` and `libmupdf` directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files, which are located in the `Modules` directory, to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
+Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
 
 ![Step_2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_2.png)
 
@@ -195,7 +183,7 @@ Open your project in Xcode by opening `YourProjectName.xcworkspace` as shown in 
 
 ### Step 4
 
-Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project target in Xcode, as shown in the image below.
+Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project in Xcode, as shown in the image below.
 
 ![Step_4](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.png)
 
@@ -247,7 +235,7 @@ In the `Run Script`, add the output files under the `Output Files` section, as s
 
 ### Step 11
 
-Drag the `Run Script` section from the bottom to above the `Link Binary With Libraries` section, as shown in the image below.
+Drag the `Run Script` section from the bottom to above the `Link Binary With Libraries` and `Compile Sources` sections, as shown in the image below.
 
 ![Step_11](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_11.png)
 
