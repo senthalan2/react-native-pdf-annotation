@@ -171,7 +171,7 @@ git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
 
 ### Step 2
 
-Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project_Name/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project_Name/ios` directory. Finally, your project's `ios` directory should look like the image below.
+Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project/ios` directory. Finally, your project's `ios` directory should look like the image below.
 
 ![Step_2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_2.png)
 
@@ -186,6 +186,14 @@ Open your project in Xcode by opening `YourProjectName.xcworkspace` as shown in 
 Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project in Xcode, as shown in the image below.
 
 ![Step_4](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.png)
+
+Next, create a `Resources` group in Xcode. Move all icons from the `Resources` directory (located in the cloned `MuPdf_IOS_Configuration_Files directory`) to the `Your_Project/ios/Resources` directory. Then, drag and drop the icons from the `Resources` directory into this group in Xcode, as shown in the images below.
+
+![Step_4.1](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.1.png)
+
+![Step_4.2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.2.png)
+
+![Step_4.3](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.3.png)
 
 ### Step 5
 
@@ -208,7 +216,7 @@ Select the `Generate` target. Under `Info -> External Build Tool Configuration`,
 
 ### Step 8
 
-Select your project's directory and open `Build Settings`. In `Build Settings`, search for `User Header Search Paths`. Add the mupdf library path as `libmupdf/include` to this section, as shown in the image below. The `libmupdf` directory was moved from the cloned repository `MuPdf_IOS_Configuration_Files` to `Your_Project_Name/ios`. The `include` directory, which contains the `mupdf` library, is located inside the `libmupdf` directory.
+Select your project's directory and open `Build Settings`. In `Build Settings`, search for `User Header Search Paths`. Add the mupdf library path as `libmupdf/include` to this section, as shown in the image below. The `libmupdf` directory was moved from the cloned repository `MuPdf_IOS_Configuration_Files` to `Your_Project/ios`. The `include` directory, which contains the `mupdf` library, is located inside the `libmupdf` directory.
 
 ![Step_8.1](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_8.1.png)
 
@@ -259,7 +267,7 @@ Click the scheme menu and select `Generate`. Then, run the build, as shown in th
 
 ![Step_12](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_12.png)
 
-After that, change the scheme from `Generate` to `Your_Project_Name` and run the build again.
+After that, change the scheme from `Generate` to `Your_Project` and run the build again.
 
 ## Contributing
 
