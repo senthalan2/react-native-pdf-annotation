@@ -187,7 +187,7 @@ Open your project in Xcode by opening `YourProjectName.xcworkspace` as shown in 
 
 ### Step 4
 
-Drag and drop the `Classes` directory and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project in Xcode, as shown in the image below.
+Drag and drop the `Classes`, `BookMarks`, `DB`, `Utils` directories and the `common.h`, `common.m`, `PdfAnnotation.h` and `PdfAnnotation.mm` files into your project in Xcode, as shown in the image below.
 
 ![Step_4](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_4.png)
 
