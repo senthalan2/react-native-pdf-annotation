@@ -175,7 +175,7 @@ git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
 
 ### Step 2
 
-Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project/ios` directory. Additionally, transfer the `BookMarks`, `DB`, and `Utils` directories, which are needed for the bookmarks feature, to the `Your_Project/ios` directory. Finally, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project/ios` directory. Finally, your project's `ios` directory should look like the image below.
+Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project/ios` directory. Additionally, transfer the `BookMarks`, `DB`, and `Utils` directories, which are needed for the bookmarks feature, to the `Your_Project/ios` directory. Finally, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project/ios` directory. After completing these steps, your project's `ios` directory should look like the image below.
 
 ![Step_2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_2.png)
 
