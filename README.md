@@ -277,7 +277,7 @@ After that, change the scheme from `Generate` to `Your_Project` and run the buil
 
 If you face an issue like the one shown in the image while building the Generate scheme,
 
-![IOS_Issue](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/ios_issue.png)
+![IOS_Error](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/ios_error.png)
 
 follow these steps:
 
