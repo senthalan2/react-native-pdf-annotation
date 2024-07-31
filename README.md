@@ -210,7 +210,7 @@ Add the `libmupdf.a` and `libmupdfthird.a` files, which are located in the `Libr
 
 In your project's `Targets` section, add another target by clicking the `add target (plus icon) button`. In the popup, select the `Other` tab and choose `External Build System` under the `Other` section. Click Next, enter `Generate` as the Product Name, and then click Finish. Refer to the video below for a demonstration of adding an External Build System target.
 
-https://github.com/user-attachments/assets/5f77b75d-1ba7-4f40-92b2-d3e73208fc79
+https://github.com/user-attachments/assets/7278ff09-3612-4d92-8071-70c0b102145e
 
 ### Step 7
 
