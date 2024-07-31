@@ -27,6 +27,7 @@ Go to your `android/app/src/main/AndroidManifest.xml` file and add the `MuPDFAct
         ....
       </activity>
       <activity android:name="com.artifex.mupdfdemo.MuPDFActivity" />   <!--   Add this   -->
+  <activity android:name="com.artifex.mupdfdemo.BookMarkActivity" />   <!-- Add this if you want bookmarks -->
 </application>
 ```
 
@@ -77,17 +78,19 @@ function App() {
 	
 	// ...
 	
-	openPdf(filePath,  {
-		isEnableAnnot:  true, // Show or Hide the annotation button
-		continuePage: 2, // Continue Reading Page Number
-		isEnableCustomFooterColor: true, // Enable/Disable Custom Footer Color (Android Only)
-		isEnableCustomHeaderColor: true, // Enable/Disable Custom Header Color (Android Only)
-	}).then((res)  =>  {
-		console.log(res,  'Pdf Opened');
-	}).catch((e)  =>  {
-		console.log(e,  'open pdf error');
-	});
-	}
+ openPdf(filePath, {
+    isEnableAnnot: true, // Show or Hide the annotation button
+    isEnableBookMark: true, // Show or Hide the bookmarks buttons
+    continuePage: 2, // Continue Reading Page Number
+    isEnableCustomFooterColor: true, // Enable/Disable Custom Footer Color (Android Only)
+    isEnableCustomHeaderColor: true, // Enable/Disable Custom Header Color (Android Only)
+  }).then((res) => {
+      console.log(res, 'Pdf Opened');
+    }).catch((e) => {
+      console.log(e, 'open pdf error');
+    });
+
+}
 
 // ...
 
@@ -106,6 +109,7 @@ This is an Object Which you pass as second parameter to the `openPdf()` Method.
 | Key                       | type    | Required | Default   | IOS                | Android            | Description                                                          |
 | -----------------         | ------- | -------- | --------- | ------------------ | ------------------ | ---------------------------------------------------------------------|
 | isEnableAnnot             | Boolean | No       |	true     | :white_check_mark: | :white_check_mark: | A boolean value that decides whether to enable annotation            |
+| isEnableBookMark          | Boolean | No       |	true     | :white_check_mark: | :white_check_mark: | A boolean value that decides whether to enable bookmarks             |
 | continuePage              | Number  | No       |	0        | :white_check_mark: | :white_check_mark: | The page number from which to continue reading the PDF               | 
 | isEnableCustomHeaderColor | Boolean | No       | false     | :x:                | :white_check_mark: | A boolean value that decides whether to enable custom header color   | 
 | isEnableCustomFooterColor | Boolean | No       | false     | :x:                | :white_check_mark: | A boolean value that decides whether to enable custom footer color   |
@@ -171,7 +175,7 @@ git clone https://github.com/senthalan2/MuPdf_IOS_Configuration_Files.git
 
 ### Step 2
 
-Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project/ios` directory. Also, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project/ios` directory. Finally, your project's `ios` directory should look like the image below.
+Go to the `MuPdf_IOS_Configuration_Files` directory and move the `Classes` and `libmupdf` (located inside the `IOS_Library` directory) directories, as well as the `build_libs.sh`, `common.h`, and `common.m` files, to the `Your_Project/ios` directory. Additionally, transfer the `BookMarks`, `DB`, and `Utils` directories, which are needed for the bookmarks feature, to the `Your_Project/ios` directory. Finally, move the `PdfAnnotation.h` and `PdfAnnotation.mm` files (located in the `Modules` directory) to the `Your_Project/ios` directory. After completing these steps, your project's `ios` directory should look like the image below.
 
 ![Step_2](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/step_2.png)
 
@@ -279,6 +283,3 @@ MIT
 
 ---
 
-## Would you like to support me?
-
-<a href="https://www.buymeacoffee.com/senthalan2" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
