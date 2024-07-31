@@ -16,6 +16,10 @@
     <string name="select">Select</string>
     <string name="search">Search</string>
     <string name="copy">Copy</string>
+  <string name="bookmark">BookMark</string>
+  <string name="bookmark_delete">BookMark Delete</string>
+  <string name="close">Close</string>
+  <string name="bookmarkList">BookMark List</string>
     <string name="strike_out">Strike-out</string>
     <string name="delete">Delete</string>
     <string name="highlight">Highlight</string>

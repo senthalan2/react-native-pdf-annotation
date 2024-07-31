@@ -32,15 +32,18 @@ public class PdfAnnotationModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void openPdf(String url, ReadableMap readableMap, Promise promise) {
+  public void openPdf(String url,String pdfId, ReadableMap readableMap, Promise promise) {
     try{
       if(reactContext != null){
+        Utilities.setIsSetContinuePage(false);
         Intent intent = new Intent(reactContext, MuPDFActivity.class);
         intent.setAction(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
+        intent.putExtra("bookId",pdfId);
         if(readableMap != null){
           Utilities utilities = new Utilities(readableMap);
           intent.putExtra("isEnableAnnot",utilities.getBoolValue("isEnableAnnot",true));
+          intent.putExtra("isEnableBookMark",utilities.getBoolValue("isEnableBookMark",true));
           intent.putExtra("continuePage",utilities.getIntValue("continuePage",0));
           intent.putExtra("isEnableCustomHeaderColor",utilities.getBoolValue("isEnableCustomHeaderColor",false));
           intent.putExtra("isEnableCustomFooterColor",utilities.getBoolValue("isEnableCustomFooterColor",false));

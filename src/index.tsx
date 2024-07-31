@@ -44,6 +44,11 @@ export interface PdfEventsProps {
 
 export interface PdfAnnotationOptions {
   /**
+   * The unique identifier for the PDF document.
+   * This is used to bookmark pages in the specific PDF document.
+   */
+  pdfId?: string;
+  /**
    * A boolean value that decides whether to enable annotation.
    */
   isEnableAnnot?: boolean;
@@ -61,6 +66,11 @@ export interface PdfAnnotationOptions {
    * This property is only applicable for Android.
    */
   isEnableCustomFooterColor?: boolean;
+  /**
+   * A boolean value that decides whether to enable bookmarks.
+   * If true, users can add and manage bookmarks within the PDF document.
+   */
+  isEnableBookMark?: boolean;
 }
 
 export const pdfEvents = {
@@ -73,7 +83,7 @@ export function openPdf(
   url: string,
   config?: PdfAnnotationOptions
 ): Promise<number> {
-  return PdfAnnotation.openPdf(url, config);
+  return PdfAnnotation.openPdf(url, config?.pdfId ?? 'test_pdf', config);
 }
 
 export const pdfEventEmitter =

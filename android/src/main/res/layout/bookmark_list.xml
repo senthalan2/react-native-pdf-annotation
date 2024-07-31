@@ -1,76 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/white"
-    >
-    <RelativeLayout
-        android:id="@+id/bookMarkHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
-        android:background="@color/toolbar" >
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/white"
+  >
+  <RelativeLayout
+    android:id="@+id/bookMarkHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="5dp"
+    android:background="@color/toolbar" >
 
-        <ImageButton
-            android:id="@+id/bookmarkCloseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/close"
-            android:background="@drawable/button"
-            android:src="@drawable/ic_cancel" />
-
-        <TextView
-            android:id="@+id/bookMarkTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp"
-            android:singleLine="true"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:focusable="true"
-            android:layout_toEndOf="@id/bookmarkCloseButton"
-            android:layout_toStartOf="@+id/bookMarkDeleteButton"
-            android:textAlignment="center"
-            android:text="Bookmark List"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <ImageButton
-            android:id="@+id/bookMarkDeleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:paddingEnd="10dp"
-            android:contentDescription="@string/bookmark_delete"
-            android:background="@drawable/button"
-            android:src="@drawable/ic_trash" />
-    </RelativeLayout>
-
-
-    <ListView
-        android:id="@+id/listViewBookMark"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:padding="10dp"
-        android:dividerHeight="1dp"
-        android:cacheColorHint="#00000000"
-        android:layout_below="@+id/bookMarkHeader"
-        />
+    <ImageButton
+      android:id="@+id/bookmarkCloseButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:contentDescription="@string/close"
+      android:background="@drawable/button"
+      android:src="@drawable/ic_cancel" />
 
     <TextView
-        android:id="@+id/emptyView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="No bookmarks added"
-        android:textAlignment="center"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/black" />
+      android:id="@+id/bookMarkTitle"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:paddingRight="16dp"
+      android:paddingLeft="16dp"
+      android:singleLine="true"
+      android:textColor="#FFFFFF"
+      android:textStyle="bold"
+      android:focusable="true"
+      android:layout_toEndOf="@id/bookmarkCloseButton"
+      android:layout_toStartOf="@+id/bookMarkDeleteButton"
+      android:textAlignment="center"
+      android:text="Bookmark List"
+      android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageButton
+      android:id="@+id/bookMarkDeleteButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_alignParentEnd="true"
+      android:paddingEnd="10dp"
+      android:contentDescription="@string/bookmark_delete"
+      android:background="@drawable/button"
+      android:src="@drawable/ic_trash" />
+  </RelativeLayout>
+
+
+  <ListView
+    android:id="@+id/listViewBookMark"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:padding="10dp"
+    android:dividerHeight="1dp"
+    android:cacheColorHint="#00000000"
+    android:layout_below="@+id/bookMarkHeader"
+    />
+
+  <TextView
+    android:id="@+id/emptyView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="No bookmarks added"
+    android:textAlignment="center"
+    android:visibility="gone"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textColor="@color/black" />
 
 
 </RelativeLayout>

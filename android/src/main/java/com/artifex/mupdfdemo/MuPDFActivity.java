@@ -24,6 +24,7 @@ import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -44,9 +45,11 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.pdfannotation.R;
+import com.pdfannotation.Utilities;
 
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -69,6 +72,7 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private final int    FILEPICK_REQUEST=2;
 	private final int    PROOF_REQUEST=3;
 	private MuPDFCore    core;
+  private String bookId;
 	private String       mFileName;
 	private MuPDFReaderView mDocView;
 	private View         mButtonsView;
@@ -80,6 +84,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private TextView     mPageNumberView;
 	private TextView     mInfoView;
 	private ImageButton  mSearchButton;
+  private ImageButton mBookMarkButton;
+  private ImageButton mBookMarkListButton;
 //	private ImageButton  mReflowButton;
 //	private ImageButton  mOutlineButton;
 	private ImageButton	mMoreButton;
@@ -94,7 +100,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	private EditText     mSearchText;
 	private SearchTask   mSearchTask;
 	private ImageButton  mProofButton;
-	private ImageButton  mSepsButton;
 	private AlertDialog.Builder mAlertBuilder;
 	private boolean    mLinkHighlight = false;
 	private final Handler mHandler = new Handler();
@@ -233,7 +238,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	private MuPDFCore openFile(String path)
 	{
-		Log.d("TTTTT", "openFile: "+path);
 		int lastSlashPos = path.lastIndexOf('/');
 		mFileName = new String(lastSlashPos == -1
 					? path
@@ -243,7 +247,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		{
 
 			core = new MuPDFCore(this, path);
-			Log.d("TTTTT", "openFile: ");
 			// New file: drop the old outline data
 			OutlineActivityData.set(null);
 		}
@@ -308,7 +311,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 
 				Uri uri = intent.getData();
-				Log.d("TTTTT", "onCreate: "+uri);
 				load = new LoadFile(this, mFileName, uri.getPath());
 				System.out.println("URI to open is: " + uri);
 				if (uri.toString().startsWith("content://")) {
@@ -410,7 +412,11 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			alert.show();
 			return;
 		}
-
+    try {
+      Utilities.createdatabase(this);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
 		createUI(savedInstanceState);
 
 		//  hide the proof button if this file can't be proofed
@@ -423,8 +429,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			//  start the activity with a new array
 			mSepEnabled = null;
 
-			//  show the separations button
-			mSepsButton.setVisibility(View.VISIBLE);
 
 			//  hide some other buttons
 //			mLinkButton.setVisibility(View.INVISIBLE);
@@ -432,10 +436,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 //			mOutlineButton.setVisibility(View.INVISIBLE);
 			mSearchButton.setVisibility(View.INVISIBLE);
 			mMoreButton.setVisibility(View.INVISIBLE);
-		}
-		else {
-			//  hide the separations button
-			mSepsButton.setVisibility(View.INVISIBLE);
 		}
 
 	}
@@ -551,7 +551,10 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			}
 		};
 
-
+    Bundle extras = getIntent().getExtras();
+    if(extras != null && extras.get("bookId") != null){
+      bookId = extras.getString("bookId");
+    }
 
 
 		// Make the buttons overlay, and store all its
@@ -586,6 +589,69 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 				searchModeOn();
 			}
 		});
+
+    mBookMarkButton.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        Log.v("Notification", "Displayed view index : " + mDocView.getDisplayedViewIndex() + 1);
+
+        LayoutInflater li = LayoutInflater.from(MuPDFActivity.this);
+        View promptsView = li.inflate(R.layout.dialog_bookmark, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+          MuPDFActivity.this, R.style.AlertDialogCustom);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView.findViewById(R.id.editTextBookMarkName);
+
+        final TextView pageNo = (TextView) promptsView.findViewById(R.id.textPageNumber);
+        pageNo.setText("Page " + (mDocView.getDisplayedViewIndex() + 1));
+
+        // set dialog message
+        alertDialogBuilder.setTitle("Add BookMark")
+          .setCancelable(false)
+          .setPositiveButton("Add",
+            new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+                // get user input and set it to result
+                // edit text
+
+                BookMark bookMark = new BookMark(bookId, mDocView.getDisplayedViewIndex() + 1, false, userInput.getText().toString());
+                Utilities.addBookMark(MuPDFActivity.this, bookMark);
+
+                if (Utilities.getBookMarkCount(MuPDFActivity.this,bookId) > 0) {
+                  mBookMarkListButton.setVisibility(View.VISIBLE);
+                }
+              }
+            })
+          .setNegativeButton("Cancel",
+            new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+              }
+            });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+      }
+    });
+
+
+    mBookMarkListButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(MuPDFActivity.this, BookMarkActivity.class);
+        intent.putExtra(BookMarkActivity.BOOK_ID, bookId);
+        intent.putExtra(BookMarkActivity.CURRENT_PAGE, mDocView.getDisplayedViewIndex());
+        startActivityForResult(intent, 0);
+      }
+    });
 
 		// Activate the reflow button
 //		mReflowButton.setOnClickListener(new View.OnClickListener() {
@@ -687,14 +753,15 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		// Reenstate last state if it was recorded
 		SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
 
-		Bundle extras = getIntent().getExtras();
-		if(extras != null && extras.get("continuePage") != null && extras.getInt("continuePage") > 0){
-			int continuePage = extras.getInt("continuePage");
-			mDocView.setDisplayedViewIndex(continuePage-1);
-		}
-		else{
-			mDocView.setDisplayedViewIndex(prefs.getInt("page"+mFileName, 0));
-		}
+
+    if(extras != null && extras.get("continuePage") != null && !Utilities.isSetContinuePage){
+      int continuePage = extras.getInt("continuePage");
+      mDocView.setDisplayedViewIndex(continuePage-1);
+      Utilities.setIsSetContinuePage(true);
+    }
+    else{
+      mDocView.setDisplayedViewIndex(prefs.getInt("page"+mFileName, 0));
+    }
 		if (savedInstanceState == null || !savedInstanceState.getBoolean("ButtonsHidden", false))
 			showButtons();
 
@@ -722,8 +789,19 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case OUTLINE_REQUEST:
-			if (resultCode >= 0)
-				mDocView.setDisplayedViewIndex(resultCode);
+//			if (resultCode >= 0)
+//				mDocView.setDisplayedViewIndex(resultCode);
+      if (resultCode == RESULT_OK){
+        boolean isListEmpty = data.getBooleanExtra(BookMarkActivity.IS_LIST_EMPTY, false);
+        int currentPage = data.getIntExtra(BookMarkActivity.CURRENT_PAGE, 0);
+        mDocView.setDisplayedViewIndex(currentPage);
+        if(isListEmpty){
+          mBookMarkListButton.setVisibility(View.GONE);
+        }
+        else{
+          mBookMarkListButton.setVisibility(View.VISIBLE);
+        }
+      }
 			break;
 		case PRINT_REQUEST:
 			if (resultCode == RESULT_CANCELED)
@@ -992,12 +1070,16 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 
 	private void makeButtonsView() {
 		Boolean isEnableAnnot = true;
+    Boolean isEnableBookMark = true;
     Boolean isEnableCustomHeaderColor = false;
     Boolean isEnableCustomFooterColor = false;
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
       try{
         isEnableAnnot = extras.getBoolean("isEnableAnnot");
+      }catch(Exception e){}
+      try{
+        isEnableBookMark = extras.getBoolean("isEnableBookMark");
       }catch(Exception e){}
       try{
         isEnableCustomHeaderColor = extras.getBoolean("isEnableCustomHeaderColor");
@@ -1015,6 +1097,8 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		mPageNumberView = (TextView)mButtonsView.findViewById(R.id.pageNumber);
 		mInfoView = (TextView)mButtonsView.findViewById(R.id.info);
 		mSearchButton = (ImageButton)mButtonsView.findViewById(R.id.searchButton);
+    mBookMarkButton = (ImageButton) mButtonsView.findViewById(R.id.bookmarkButton);
+    mBookMarkListButton = (ImageButton) mButtonsView.findViewById(R.id.bookmarkListButton);
 
 //		mReflowButton = (ImageButton)mButtonsView.findViewById(R.id.reflowButton);
 //		mOutlineButton = (ImageButton)mButtonsView.findViewById(R.id.outlineButton);
@@ -1033,6 +1117,18 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 			mSearchButton.setLayoutParams(params);
 			mMoreButton.setVisibility(View.GONE);
 		}
+    if(!isEnableBookMark){
+      RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mFilenameView.getLayoutParams();
+      params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+      mFilenameView.setLayoutParams(params);
+      mBookMarkButton.setVisibility(View.GONE);
+      mBookMarkListButton.setVisibility(View.GONE);
+    }
+    else{
+      if (Utilities.getBookMarkCount(MuPDFActivity.this,bookId) <= 0) {
+        mBookMarkListButton.setVisibility(View.GONE);
+      }
+    }
     if(isEnableCustomHeaderColor){
       RelativeLayout topBar0Main = (RelativeLayout)mButtonsView.findViewById(R.id.topBar0Main);
       topBar0Main.setBackgroundResource(R.color.pdf_header_background_color);
@@ -1041,7 +1137,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
       mPageSlider.setBackgroundResource(R.color.pdf_footer_background_color);
     }
 		mProofButton = (ImageButton)mButtonsView.findViewById(R.id.proofButton);
-		mSepsButton = (ImageButton)mButtonsView.findViewById(R.id.sepsButton);
 		mTopBarSwitcher.setVisibility(View.INVISIBLE);
 		mPageNumberView.setVisibility(View.INVISIBLE);
 		mInfoView.setVisibility(View.INVISIBLE);
@@ -1050,7 +1145,6 @@ public class MuPDFActivity extends Activity implements FilePicker.FilePickerSupp
 		if (!MuPDFCore.gprfSupported()) {
 			mProofButton.setVisibility(View.INVISIBLE);
 		}
-		mSepsButton.setVisibility(View.INVISIBLE);
 
 	}
 

@@ -1,23 +1,23 @@
 package com.artifex.mupdfdemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.teachingsofswamidayananda.R;
-import com.teachingsofswamidayananda.Utilities;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.pdfannotation.R;
+import com.pdfannotation.Utilities;
+
+import java.util.List;
 
 public class BookMarkActivity extends Activity implements OnClickListener {
 
@@ -95,16 +95,35 @@ public class BookMarkActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.bookMarkDeleteButton) {
-            for (BookMark checked : bkAdapter.getCheckedItems()) {
-                if (checked.getIsChecked()) {
+          for (BookMark checked : bkAdapter.getCheckedItems()) {
+            if (checked.getIsChecked()) {
+              // Creating an alert dialog
+              new AlertDialog.Builder(this)
+                .setTitle("Delete Confirmation")
+                .setMessage("Are you sure you want to delete the selected bookmarks?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int which) {
+                    // Continue with delete operation
                     bkAdapter.remove(checked);
                     Log.v("Notification", "Checked bookid : " + checked.getBookId());
                     Log.v("Notification", "Checked pageno : " + checked.getPageNo());
-                    Utilities.deleteBookMark(this, checked.getBookId(), checked.getPageNo());
-                }
+                    Utilities.deleteBookMark(BookMarkActivity.this, checked.getBookId(), checked.getPageNo());
+
+                    bkAdapter.notifyDataSetChanged();
+                    updateDeleteButtonVisibility();
+                  }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing if user cancels the action
+                    dialog.dismiss();
+                  }
+                })
+//                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
             }
-            bkAdapter.notifyDataSetChanged();
-            updateDeleteButtonVisibility();
+          }
+
         } else if (v.getId() == R.id.bookmarkCloseButton) {
             backAction();
         } else {
