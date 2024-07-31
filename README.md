@@ -27,6 +27,7 @@ Go to your `android/app/src/main/AndroidManifest.xml` file and add the `MuPDFAct
         ....
       </activity>
       <activity android:name="com.artifex.mupdfdemo.MuPDFActivity" />   <!--   Add this   -->
+  <activity android:name="com.artifex.mupdfdemo.BookMarkActivity" />   <!-- Add this if you want bookmarks -->
 </application>
 ```
 
@@ -79,6 +80,7 @@ function App() {
 	
 	openPdf(filePath,  {
 		isEnableAnnot:  true, // Show or Hide the annotation button
+    isEnableBookMark:  true, // Show or Hide the bookmarks buttons
 		continuePage: 2, // Continue Reading Page Number
 		isEnableCustomFooterColor: true, // Enable/Disable Custom Footer Color (Android Only)
 		isEnableCustomHeaderColor: true, // Enable/Disable Custom Header Color (Android Only)
@@ -106,6 +108,7 @@ This is an Object Which you pass as second parameter to the `openPdf()` Method.
 | Key                       | type    | Required | Default   | IOS                | Android            | Description                                                          |
 | -----------------         | ------- | -------- | --------- | ------------------ | ------------------ | ---------------------------------------------------------------------|
 | isEnableAnnot             | Boolean | No       |	true     | :white_check_mark: | :white_check_mark: | A boolean value that decides whether to enable annotation            |
+| isEnableBookMark          | Boolean | No       |	true     | :white_check_mark: | :white_check_mark: | A boolean value that decides whether to enable bookmarks             |
 | continuePage              | Number  | No       |	0        | :white_check_mark: | :white_check_mark: | The page number from which to continue reading the PDF               | 
 | isEnableCustomHeaderColor | Boolean | No       | false     | :x:                | :white_check_mark: | A boolean value that decides whether to enable custom header color   | 
 | isEnableCustomFooterColor | Boolean | No       | false     | :x:                | :white_check_mark: | A boolean value that decides whether to enable custom footer color   |
