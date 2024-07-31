@@ -27,5 +27,9 @@
       <activity
         android:name="com.artifex.mupdfdemo.MuPDFActivity"
         />
+      <activity
+        android:name="com.artifex.mupdfdemo.BookMarkActivity"
+        />
+
     </application>
 </manifest>

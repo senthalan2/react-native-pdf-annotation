@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/pageDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkBoxBookMark"
+        android:paddingHorizontal="10dp"
+        android:text="Testt Descjjddddhjddfdgdjflkjdfddfhelh weirweir ewrwerweiwe ewwrerrrrrrrrrr"
+        android:textSize="16sp"
+        android:layout_toLeftOf="@id/pageTitle"
+        android:textStyle="bold|italic"
+        android:color="@android:color/black"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        />
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:textSize="16sp"
+        android:text="Page 50"
+        android:color="@android:color/black"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:textColor="@android:color/black"
+        />
+
+    <CheckBox
+        android:id="@+id/checkBoxBookMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:focusable="false"
+        android:layout_centerVertical="true"
+        />
+
+</RelativeLayout>

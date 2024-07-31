@@ -76,8 +76,10 @@ export default function App() {
       .fetch('GET', url)
       .then(() => {
         openPdf(filePath, {
+          // isEnableBookMark: false,
+          continuePage: 1,
           // isEnableCustomFooterColor: true,
-          isEnableAnnot: true,
+          // isEnableAnnot: true,
           // isEnableCustomHeaderColor: true,
           // continuePage: 0,
         })
