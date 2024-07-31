@@ -282,7 +282,7 @@ If you face an issue like the one shown in the image while building the Generate
 follow these steps:
 
   1. Remove the `libmupdf` directory from `Your_Project/ios`.
-  2. Move the `libmupdf` directory from the cloned repository `MuPdf_IOS_Configuration_Files` to `Your_Project/ios`.
+  2. Again Move the `libmupdf` directory from the cloned repository `MuPdf_IOS_Configuration_Files` to `Your_Project/ios`.
   3. Re-run the `Generate` scheme, ensuring that the selected device is `Catalyst`, as shown in the below image.
 
 ![Catalyst](https://github.com/senthalan2/react-native-pdf-annotation/blob/main/assets/catalyst.png)
