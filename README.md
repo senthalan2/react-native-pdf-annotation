@@ -78,17 +78,17 @@ function App() {
 	
 	// ...
 	
-	openPdf(filePath,  {
-		isEnableAnnot:  true, // Show or Hide the annotation button
-    isEnableBookMark:  true, // Show or Hide the bookmarks buttons
-		continuePage: 2, // Continue Reading Page Number
-		isEnableCustomFooterColor: true, // Enable/Disable Custom Footer Color (Android Only)
-		isEnableCustomHeaderColor: true, // Enable/Disable Custom Header Color (Android Only)
-	}).then((res)  =>  {
-		console.log(res,  'Pdf Opened');
-	}).catch((e)  =>  {
-		console.log(e,  'open pdf error');
-	});
+ openPdf(filePath, {
+    isEnableAnnot: true, // Show or Hide the annotation button
+    isEnableBookMark: true, // Show or Hide the bookmarks buttons
+    continuePage: 2, // Continue Reading Page Number
+    isEnableCustomFooterColor: true, // Enable/Disable Custom Footer Color (Android Only)
+    isEnableCustomHeaderColor: true, // Enable/Disable Custom Header Color (Android Only)
+  }).then((res) => {
+      console.log(res, 'Pdf Opened');
+    }).catch((e) => {
+      console.log(e, 'open pdf error');
+    });
 	}
 
 // ...
